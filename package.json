@@ -6,7 +6,7 @@
   "author": "gerssivaldosantos <canalandows@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev index.ts"
+    "dev": "ts-node-dev --respawn exercises/* "
   },
   "devDependencies": {
     "typescript": "^4.7.4",
