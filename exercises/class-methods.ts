@@ -17,12 +17,22 @@ enum GameGenreEnum {
 
 class Game {
     constructor(
-        public name: string,
-        public genre: GameGenreEnum,
-        public rating: number,
-        public releaseDate: Date,
-        public gameOfYear: boolean,
+        private name: string,
+        private genre: GameGenreEnum,
+        private rating: number,
+        private releaseDate: Date,
+        private gameOfYear: boolean,
     ) {}
+
+    public getInfo(): Record<string, any> {
+        return {
+            name: this.name,
+            genre: this.genre,
+            rating: this.rating,
+            releaseDate: this.releaseDate,
+            gameOfYear: this.gameOfYear,
+        };
+    }
 }
 
 const horizonNewDawn: Game = new Game(
@@ -32,4 +42,4 @@ const horizonNewDawn: Game = new Game(
     new Date(2020, 1, 1),
     true,
 )
-console.log(kratos)
+console.log(horizonNewDawn.getInfo())
