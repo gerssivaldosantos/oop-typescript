@@ -105,5 +105,14 @@ class Motocycle extends VehicleEngine {
 }
 
 class Car extends VehicleEngine {
+    private isConductDoorOpen:boolean = false
     private steeringWheel: SteeringWheel = new SteeringWheel()
+    
+    private setOpenConductDoorState(state: boolean): void {
+        this.isConductDoorOpen = state
+    }
+
+    private openConductDoor(): void {
+        this.setOpenConductDoorState(true)
+    }
 }
