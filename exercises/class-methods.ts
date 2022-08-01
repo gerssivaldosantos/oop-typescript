@@ -1,4 +1,4 @@
-// First example: game character class
+// Second example: Game class with methods
 
 enum GameGenreEnum {
     RPG = 'RPG',
