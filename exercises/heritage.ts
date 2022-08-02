@@ -13,7 +13,7 @@ interface INobel {
     year: number; 
 }
 
-class Person {
+abstract class Person {
     private name: string = ''
     private birthday: Date = new Date()
     private isPretty: boolean = false
