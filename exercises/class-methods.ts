@@ -17,21 +17,40 @@ enum GameGenreEnum {
 
 class Game {
     constructor(
-        private name: string,
-        private genre: GameGenreEnum,
-        private rating: number,
-        private releaseDate: Date,
-        private gameOfYear: boolean,
-    ) {}
+        private _name: string,
+        private _genre: GameGenreEnum,
+        private _rating: number,
+        private _releaseDate: Date,
+        private _gameOfYear: boolean,
+    ) { }
+
+    private static subtractDates(date1: Date, date2: Date): any {
+        var difference = date1.getTime() - date2.getTime();
+        return difference
+    }
 
     public getInfo(): Record<string, any> {
         return {
-            name: this.name,
-            genre: this.genre,
-            rating: this.rating,
-            releaseDate: this.releaseDate,
-            gameOfYear: this.gameOfYear,
+            _name: this._name,
+            _genre: this._genre,
+            _rating: this._rating,
+            _releaseDate: this._releaseDate,
+            _gameOfYear: this._gameOfYear,
         };
+    }
+
+    public getGameAge(): Date {
+        const now = new Date()
+        const diff = Game.subtractDates(now, this._releaseDate)
+        return diff
+    }
+
+    private setRating(rating: number): void {
+        this._rating = rating
+    }
+
+    public rateGame(rating: number): void {
+        if (rating >= 0 && rating <= 10) this.setRating(rating)
     }
 }
 
@@ -39,7 +58,10 @@ const horizonNewDawn: Game = new Game(
     'Horizon: New Dawn',
     GameGenreEnum.RPG,
     9.8,
-    new Date(2020, 1, 1),
+    new Date(2020, 1, 1, 0, 0, 0, 0),
     true,
 )
+console.log(horizonNewDawn.getInfo())
+console.log(horizonNewDawn.getGameAge())
+horizonNewDawn.rateGame(10)
 console.log(horizonNewDawn.getInfo())
